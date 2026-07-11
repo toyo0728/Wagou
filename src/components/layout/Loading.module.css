@@ -28,10 +28,10 @@
   object-fit: cover;
 }
 
-/* 中央ロゴのすぐ下に配置 */
+/* 中央ロゴと重ならないよう、ロゴのすぐ下に配置 */
 .percent {
   position: absolute;
-  top: 58%;
+  top: 59%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -52,7 +52,7 @@
 
 @media (width >= 768px) {
   .percent {
-    top: 58%;
+    top: 60%;
     font-size: 2.4rem;
   }
 }

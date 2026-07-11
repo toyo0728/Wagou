@@ -1,4 +1,5 @@
 import styles from './page.module.css';
+import Loading from '@/components/layout/Loading';
 import FirstView from './_components/FirstView';
 import FixedHeader from '@/components/layout/FixedHeader';
 import ConceptSection from './_components/ConceptSection';
@@ -15,6 +16,7 @@ import AccessSection from './_components/AccessSection';
 export default function Home() {
   return (
     <>
+      <Loading />
       <FirstView />
       <FixedHeader />
       <ConceptSection />

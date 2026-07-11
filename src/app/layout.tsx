@@ -2,7 +2,6 @@ import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import Loading from '@/components/layout/Loading';
 import type { Metadata } from 'next';
 import {
   siteName,
@@ -45,7 +44,6 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${notoSansJP.variable} ${notoSerifJP.variable}`}>
       <body>
-        <Loading />
         <Header />
         {children}
         <Footer />

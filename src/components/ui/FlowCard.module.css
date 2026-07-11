@@ -14,7 +14,9 @@
 .imageWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 250 / 333;
+  /* SP は縦積みで画像が全幅になるため、縦長比率のままだと高さが出過ぎる。
+     正方形寄りにしてカードが縦長になりすぎないよう調整(PC では下で上書き) */
+  aspect-ratio: 1 / 1;
   margin-bottom: -42px;
   border-radius: 60px 10px 60px 10px;
   overflow: hidden;

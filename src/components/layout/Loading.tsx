@@ -1,55 +1,28 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Loading.module.css';
 
 // 0→100% までのカウント時間(ms)とフェードアウト時間(ms)
 const COUNT_DURATION = 2000;
 const FADE_DURATION = 600;
 
-// 一度ローディングを再生したかの記録キー。
-// localStorage に保存するため、ブラウザ(端末)を変えるまで再生しない。
-const STORAGE_KEY = 'wagou:loaded';
-
-// SSR では useEffect にフォールバック(useLayoutEffect の警告回避)
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
-
-function hasLoadedBefore() {
-  try {
-    return localStorage.getItem(STORAGE_KEY) === '1';
-  } catch {
-    // プライベートモード等で localStorage が使えない場合は毎回再生
-    return false;
-  }
-}
-
-function markLoaded() {
-  try {
-    localStorage.setItem(STORAGE_KEY, '1');
-  } catch {
-    /* noop */
-  }
-}
+// このモジュールを評価してから一度でも再生したか。
+// 初回アクセス/リロードではページ全体が再読み込みされてモジュールが再評価され
+// false に戻るため再生する。アプリ内(<Link>)のページ遷移ではモジュールが
+// メモリに残り true のままなので、他ページからトップへ戻っても再生しない。
+let hasPlayed = false;
 
 export default function Loading() {
   const [progress, setProgress] = useState(0);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  // 初回訪問以外はローディングをスキップする
-  const skip = useRef(false);
-
-  // 描画前に判定し、2回目以降はチラつかせずに即座に隠す
-  useIsomorphicLayoutEffect(() => {
-    if (hasLoadedBefore()) {
-      skip.current = true;
-      setIsHidden(true);
-    }
-  }, []);
+  // 遷移で戻ってきた場合は初期状態から隠しておき、チラつきを防ぐ
+  const [isHidden, setIsHidden] = useState(hasPlayed);
 
   useEffect(() => {
-    // サイトに入った最初の一回だけ再生する
-    if (skip.current) return;
-    markLoaded();
+    // 初回アクセス/リロード時の一回だけ再生する
+    if (hasPlayed) return;
+    hasPlayed = true;
 
     const start = performance.now();
     let rafId = 0;
@@ -72,7 +45,7 @@ export default function Loading() {
 
   // 表示中はスクロールを止める(iOS のタッチスクロールも抑止)
   useEffect(() => {
-    if (isHidden || skip.current) return;
+    if (isHidden) return;
 
     const preventTouch = (e: TouchEvent) => e.preventDefault();
 
