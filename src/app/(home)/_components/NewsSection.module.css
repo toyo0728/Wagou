@@ -1,0 +1,104 @@
+.news {
+  padding-block: 48px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  width: min(100% - 32px, 1024px);
+  margin-inline: auto;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 364px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  padding: 8px 16px 10px;
+  border: 2px solid var(--main);
+  border-radius: 1px 20px 20px 1px;
+  background: var(--main);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: center;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #fff;
+      color: var(--main);
+    }
+  }
+}
+
+@media (width >= 768px) {
+  .news {
+    padding-block: 80px;
+  }
+
+  .container {
+    gap: 64px;
+  }
+
+  .inner {
+    gap: 48px;
+    max-width: none;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    align-items: start;
+  }
+}
+
+@media (width >= 1024px) {
+  .news {
+    padding-block: 100px 50px;
+  }
+
+  .container {
+    gap: 61px;
+  }
+
+  .inner {
+    gap: 46px;
+    width: min(100%, 1142px);
+  }
+
+  .cards {
+    gap: 25px;
+  }
+
+  /* デザインの階段状レイアウト(上から 28px / 14px / 0px ずらす) */
+  .cards > *:nth-child(1) {
+    margin-top: 28px;
+  }
+
+  .cards > *:nth-child(2) {
+    margin-top: 14px;
+  }
+}

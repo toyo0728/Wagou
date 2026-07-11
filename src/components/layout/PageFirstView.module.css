@@ -1,0 +1,8 @@
+.fv {
+  background-color: var(--Sky-200);
+  padding-block: 100px 61px;
+
+  @media (width >= 768px) {
+    padding-block: 188px 140px;
+  }
+}

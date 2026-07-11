@@ -1,0 +1,32 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25px;
+  color: var(--black);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px 2px 5px;
+  border-radius: 1px;
+  background-color: var(--main);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+}
+
+.note {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25px;
+  color: var(--black);
+}

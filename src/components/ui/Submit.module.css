@@ -1,0 +1,25 @@
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  padding: 8px 16px 10px;
+  border: 2px solid var(--main);
+  border-radius: 1px 20px 1px 20px;
+  background: var(--main);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: center;
+  white-space: nowrap;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+@media (any-hover: hover) {
+  .submit:hover {
+    background: var(--white);
+    color: var(--main);
+  }
+}

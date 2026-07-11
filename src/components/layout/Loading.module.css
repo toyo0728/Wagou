@@ -1,0 +1,58 @@
+.loading {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--base);
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.isFadingOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ロゴ入りフレーム画像を全画面にフィット(背景色が一致しているので継ぎ目は出ない) */
+.logo,
+.logo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 中央ロゴのすぐ下に配置 */
+.percent {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: baseline;
+  gap: 0.1em;
+  font-family: var(--font-noto-serif-jp), serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: var(--main);
+  font-variant-numeric: tabular-nums;
+}
+
+.unit {
+  font-size: 0.6em;
+}
+
+@media (width >= 768px) {
+  .percent {
+    top: 58%;
+    font-size: 2.4rem;
+  }
+}

@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 88 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="slider-dots">
+<circle id="green-dot" cx="4" cy="4" r="4" fill="var(--fill-0, #047836)"/>
+<circle id="black-dot" cx="24" cy="4" r="4" fill="var(--fill-0, #B6B9B0)"/>
+<circle id="black-dot_2" cx="44" cy="4" r="4" fill="var(--fill-0, #B6B9B0)"/>
+<circle id="black-dot_3" cx="64" cy="4" r="4" fill="var(--fill-0, #B6B9B0)"/>
+<circle id="black-dot_4" cx="84" cy="4" r="4" fill="var(--fill-0, #B6B9B0)"/>
+</g>
+</svg>

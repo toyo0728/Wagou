@@ -1,0 +1,292 @@
+.firstView {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* カンプのレイアウトを % 絶対配置で組む舞台。
+   SP はカンプ(440 x 957)、PC はカンプ(1440 x 1185)のフレーム比率に切り替える。 */
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 440 / 957;
+}
+
+/* 背景グラデーション */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* リーフ型にマスクしたメインビジュアル(SP は左右にブリードして中央配置) */
+.leaf {
+  position: absolute;
+  top: 7.73%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 179.3%;
+  aspect-ratio: 789.392 / 579.977;
+  margin: 0;
+  z-index: 1;
+  -webkit-mask: url('/first-view/slider-mask-sp.svg') center / 100% 100% no-repeat;
+  mask: url('/first-view/slider-mask-sp.svg') center / 100% 100% no-repeat;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 3s ease;
+  pointer-events: none;
+}
+
+.slide.isActive {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.leafImage {
+  object-fit: cover;
+}
+
+/* 縦長写真(slider-2): Figma node 972:3700 の配置 */
+.leafImageCropWrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.leafImageCrop {
+  position: absolute;
+  width: 116.52%;
+  height: 245.76%;
+  left: -15.31%;
+  top: -80.47%;
+  max-width: none;
+  object-fit: cover;
+}
+
+/* 下部の切り抜き(ベースカラーで覆い、中央に吹き出しの尾のくぼみ) */
+.fvBottom {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 193.18%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.fvBottomImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ロゴ */
+.logo {
+  position: absolute;
+  top: 2.3%;
+  left: 2.95%;
+  width: 18.18%;
+  z-index: 5;
+  line-height: 0;
+}
+
+.logo :global(img) {
+  width: 100%;
+  height: auto;
+}
+
+/* PC ナビゲーション */
+.nav {
+  display: none;
+}
+
+/* スライダーのドット */
+.dots {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 4;
+}
+
+.dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #b6b9b0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dot.isActive {
+  background-color: var(--main);
+}
+
+/* 縦組みのコンセプトコピー(Figma node 864:68) */
+.concept {
+  position: absolute;
+  top: 41.9%;
+  right: 4.09%;
+  width: 24.55%;
+  aspect-ratio: 108 / 253;
+  container-type: inline-size;
+  z-index: 3;
+}
+
+.conceptCol {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64.77%;
+  background-color: #fff;
+}
+
+.conceptText {
+  margin: 0;
+  color: var(--black);
+  font-family: var(--font-noto-serif-jp), serif;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.44;
+  letter-spacing: 0;
+  text-align: center;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  white-space: nowrap;
+}
+
+/* 左: 茶舗和合 */
+.conceptShop {
+  left: 0;
+  top: 31.23%;
+  width: 27.78%;
+}
+
+/* 中央: 和み合う */
+.conceptHarmony {
+  left: 37.04%;
+  top: 17.39%;
+  width: 26.85%;
+}
+
+/* 右: ひと休み */
+.conceptRest {
+  left: 73.15%;
+  top: 0;
+  width: 26.85%;
+}
+
+/* たぬきのイラスト(カンプの切り抜き表示を再現) */
+.bears {
+  position: absolute;
+  top: 64.05%;
+  left: 59.77%;
+  width: 38.64%;
+  aspect-ratio: 170 / 112;
+  overflow: hidden;
+  transform: scaleX(-1);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.bearsImage {
+  position: absolute;
+  top: -27.86%;
+  left: -169.61%;
+  width: 275.16%;
+  height: 146.27%;
+  max-width: none;
+}
+
+/* PC: カンプ(1440 x 1185)のフレームどおりに配置 */
+@media (width >= 768px) {
+  .stage {
+    aspect-ratio: 1440 / 1185;
+  }
+
+  .leaf {
+    top: 3.63%;
+    left: 15.63%;
+    transform: none;
+    width: 68.68%;
+    aspect-ratio: 989.239 / 736.97;
+    -webkit-mask-image: url('/first-view/slider-mask.svg');
+    mask-image: url('/first-view/slider-mask.svg');
+  }
+
+  .fvBottom {
+    left: 0;
+    transform: none;
+    width: 100%;
+  }
+
+  .logo {
+    top: 6.75%;
+    left: 4.44%;
+    width: 9.03%;
+  }
+
+  .dots {
+    top: 67.6%;
+  }
+
+  .concept {
+    top: 32.91%;
+    left: 79.58%;
+    right: auto;
+    width: 7.5%;
+  }
+
+  .bears {
+    top: 54.26%;
+    left: 76.67%;
+    width: 13.89%;
+    aspect-ratio: 200 / 131;
+  }
+
+  .nav {
+    display: block;
+    position: absolute;
+    top: 21.94%;
+    left: 4.44%;
+    width: 11.18%;
+    z-index: 5;
+  }
+
+  .navList {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.39vw, 20px);
+  }
+
+  .navLink {
+    display: inline-block;
+    font-size: clamp(13px, 1.11vw, 16px);
+    font-weight: 700;
+    line-height: 2.5;
+    color: var(--black);
+    transition: color 0.2s ease;
+  }
+
+  @media (any-hover: hover) {
+    .navLink:hover {
+      color: var(--main);
+    }
+  }
+}

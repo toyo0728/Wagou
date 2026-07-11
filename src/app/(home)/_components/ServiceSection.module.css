@@ -1,0 +1,289 @@
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 50px 16px 80px;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+/* ===== 上部：2つのサービスカード ===== */
+.serviceRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+  width: 100%;
+}
+
+.serviceCard {
+  position: relative;
+  width: 100%;
+  max-width: 476px;
+  padding: 13px 12px 0 0;
+}
+
+.serviceImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 464 / 255;
+  border-radius: 100px 10px 100px 10px;
+  overflow: hidden;
+}
+
+.serviceTab {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 40px;
+  height: 198px;
+  padding: 24px 10px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 4px 6.5px rgba(187, 187, 187, 0.25);
+  writing-mode: vertical-rl;
+  color: var(--main);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 1.8px;
+  white-space: nowrap;
+}
+
+.serviceBtn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  padding: 5px 21px 8px 27px;
+  background-color: var(--main);
+  border-radius: 10px 0 10px 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+@media (any-hover: hover) {
+  .serviceBtn:hover,
+  .medBtn:hover {
+    opacity: 0.85;
+  }
+}
+
+/* ===== 下部：茶・メディテーション バナー ===== */
+.banner {
+  position: relative;
+  width: 100%;
+  max-width: 966px;
+}
+
+.bannerBg {
+  position: absolute;
+  inset: 0;
+  border-radius: 100px 10px 100px 10px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bannerBgImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.bannerContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 29px;
+  padding: 40px 20px 44px;
+}
+
+.medHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  color: var(--black);
+}
+
+.medTitle {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2.88px;
+  line-height: 1.4;
+}
+
+.medSub {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.56px;
+  line-height: 1.6;
+}
+
+.medGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  width: 100%;
+}
+
+.medCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.medCard {
+  position: relative;
+  width: 100%;
+  max-width: 262px;
+  padding-bottom: 6px;
+}
+
+.medImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1567 / 1045;
+  border-radius: 10px 50px 10px 50px;
+  overflow: hidden;
+}
+
+.medLabel {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 4px 6.5px rgba(187, 187, 187, 0.25);
+  color: var(--black);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.medBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  max-width: 100%;
+  padding: 8px 16px 10px;
+  background-color: var(--main);
+  border: 2px solid var(--main);
+  border-radius: 1px 20px 1px 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.illust {
+  position: absolute;
+  right: -8px;
+  bottom: -41px;
+  width: 140px;
+  pointer-events: none;
+}
+
+.illust img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== タブレット ===== */
+@media (width >= 768px) {
+  .service {
+    gap: 56px;
+    padding: 80px 24px 96px;
+  }
+
+  .medCards {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .medCard {
+    flex: 1 1 0;
+    max-width: 262px;
+    padding-bottom: 6px;
+  }
+
+  .illust {
+    right: -72px;
+    bottom: -20px;
+    width: 150px;
+  }
+}
+
+/* ===== PC ===== */
+@media (width >= 1024px) {
+  .service {
+    gap: 64px;
+    padding: 96px 20px 120px;
+  }
+
+  .serviceRow {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .serviceCard {
+    width: auto;
+    max-width: none;
+  }
+
+  .serviceImage {
+    width: 464px;
+    height: 255px;
+    aspect-ratio: auto;
+  }
+
+  .bannerContent {
+    max-width: 834px;
+    margin-inline: auto;
+    padding: 39px 16px 43px;
+    gap: 29px;
+  }
+
+  .medGroup {
+    gap: 18px;
+  }
+
+  .medCards {
+    gap: 24px;
+  }
+
+  .illust {
+    bottom: -28px;
+    width: 176px;
+  }
+}

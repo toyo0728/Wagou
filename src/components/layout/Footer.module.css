@@ -1,0 +1,167 @@
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding: 126px 20px 40px;
+  background: url('/main-bg.webp') lightgray 50% / cover no-repeat;
+
+  @media (width >= 768px) {
+    padding: 180px 20px 48px;
+  }
+}
+
+/* 上部を切り取る base 色のカーブ */
+.topCurve {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: var(--base);
+  border-bottom-right-radius: 160px;
+
+  @media (width >= 768px) {
+    height: 100px;
+    border-bottom-right-radius: 210px;
+  }
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+
+  @media (width >= 768px) {
+    gap: 14px;
+  }
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 31px;
+
+  @media (width >= 768px) {
+    gap: 18px;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  @media (width >= 768px) {
+    gap: 22px;
+  }
+}
+
+.logoLink {
+  transition: opacity 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.logo {
+  display: block;
+  width: 110px;
+  height: auto;
+
+  @media (width >= 768px) {
+    width: 130px;
+  }
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  text-align: center;
+}
+
+.shopName {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 2.2;
+}
+
+.addressText {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 1.92px;
+}
+
+/* SP: 2カラムのグリッド(区切り線なし) */
+.menu {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  justify-content: center;
+  column-gap: 30px;
+  row-gap: 8px;
+
+  @media (width >= 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 15px;
+    row-gap: 4px;
+  }
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.divider {
+  display: none;
+  width: 1px;
+  height: 20px;
+  background: var(--black);
+
+  @media (width >= 768px) {
+    display: block;
+  }
+}
+
+.menuLink {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 2.85;
+  transition: opacity 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.spBr {
+  @media (width >= 768px) {
+    display: none;
+  }
+}

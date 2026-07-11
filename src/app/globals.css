@@ -1,0 +1,86 @@
+@layer base {
+  :root {
+    /* Color */
+    --black: #333;
+    --white: #fff;
+    --gray-100: #eee;
+    --gray-200: #ebebeb;
+    --base: #f9f6f1;
+    --main:#047836;
+    --accent:#8B1C1A;
+    --border: #939393;
+    --placeholder: #d0d0d0;
+    --error: #e60000;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* 装飾イラスト等の画面外へのはみ出しによる横スクロールを防ぐ。
+     html だけでは一部ブラウザで効かないため body にも clip を指定する。
+     clip は hidden と違いスクロールコンテナを生成しないので sticky 等に影響しない。 */
+  html {
+    overflow-x: hidden;
+    /* スムーススクロールはナビの list クリック時だけ JS で行う(SmoothScrollLink)。
+       ここで scroll-behavior: smooth を指定すると、ページ遷移時のスクロール等も
+       すべてスムーズになってしまうため指定しない。 */
+    /* 固定ヘッダーにセクション見出しが隠れないよう上部に余白を確保 */
+    scroll-padding-top: 60px;
+  }
+
+  body {
+    overflow-x: clip;
+    margin: 0;
+    padding: 0;
+    background-color: var(--base);
+    font-family: var(--font-noto-serif-jp), sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 2;
+    color: var(--black);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}

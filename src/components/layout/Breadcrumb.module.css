@@ -1,0 +1,60 @@
+.Breadcrumb {
+  padding-block: 36px 24px;
+  padding-inline: 20px;
+  /* パンくずが長いときだけ横スクロールさせる。
+     scroll だとバーが常時表示され、縦バーも出てしまうため auto + x 限定にする */
+  overflow-x: auto;
+
+  @media (width >= 768px) {
+    padding-block: 40px;
+    padding-inline: 40px;
+  }
+}
+
+.Container {
+  width: 800px;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.Lists {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.8;
+
+  @media (width >= 768px) {
+    padding-inline: 20px;
+  }
+}
+
+.List {
+  white-space: nowrap;
+
+  &:nth-child(n + 2) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::before {
+      color: var(--Slate-700);
+      content: '>';
+    }
+  }
+}
+
+.Link {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.8;
+  transition: opacity 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

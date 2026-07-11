@@ -1,0 +1,280 @@
+.concept {
+  position: relative;
+  overflow: hidden;
+  padding-block: 48px 56px;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+/* 中央のテキストブロック（カンプ: フレーム内 margin 22px） */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding-inline: 22px;
+  text-align: center;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.title {
+  color: var(--main);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  color: var(--black);
+}
+
+.paragraph {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 2.4;
+}
+
+/* SP でのみ有効な改行（PC では無効化） */
+.brSp {
+  display: inline;
+}
+
+.illust {
+  width: 190px;
+}
+
+.illust img {
+  width: 100%;
+  height: auto;
+}
+
+.leafImage {
+  object-fit: cover;
+}
+
+/* 各リーフ写真の背後に敷く、にじむ背景グロー（デザインの Vector: #8B1C1A の大きなぼかし） */
+.glow {
+  position: absolute;
+  aspect-ratio: 679 / 707;
+  transform: translate(-50%, -50%);
+  background: url('/concept/leaf-glow.svg') center / 100% 100% no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* PC 用のグローは SP では非表示（SP は spGlow* を使う） */
+.glow1,
+.glow2,
+.glow3,
+.glow4 {
+  display: none;
+}
+
+/* SP: 下部2枚の写真それぞれの背後にグローを敷く（vector 中心に配置） */
+.spGlowSign {
+  top: 56.1%;
+  left: 72.7%;
+  width: 128%;
+}
+
+.spGlowTea {
+  top: 32%;
+  left: 20.65%;
+  width: 110%;
+  background: url('/concept/leaf-glow-green.svg');
+}
+
+/* PC 用の四隅写真は SP では非表示 */
+.leaf {
+  display: none;
+}
+
+/* SP: カンプ（フレーム440基準）どおりに下部へ2枚を配置 */
+.spStage {
+  position: relative;
+  width: 100%;
+  margin-top: 8px;
+  /* 左リーフ上端〜右リーフ下端 = 275.45 / フレーム幅440 */
+  aspect-ratio: 440 / 275.45;
+}
+
+.spLeaf {
+  position: absolute;
+  margin: 0;
+  z-index: 1;
+}
+
+/* 右・奥（看板） */
+.spSign {
+  top: 12.18%;
+  left: 36.98%;
+  width: 71.45%;
+  aspect-ratio: 314.378 / 241.916;
+  z-index: 1;
+  -webkit-mask: url('/concept/mask-c.svg') center / 100% 100% no-repeat;
+  mask: url('/concept/mask-c.svg') center / 100% 100% no-repeat;
+}
+
+/* 左・手前（茶を淹れる） */
+.spTea {
+  top: 0;
+  left: -5.26%;
+  width: 51.83%;
+  aspect-ratio: 228.062 / 176.652;
+  z-index: 2;
+  -webkit-mask: url('/concept/sp-mask-left.svg') center / 100% 100% no-repeat;
+  mask: url('/concept/sp-mask-left.svg') center / 100% 100% no-repeat;
+}
+
+@media (width >= 768px) {
+  .paragraph {
+    font-size: 16px;
+  }
+}
+
+/* PC: テキストを中央に、写真を四隅に絶対配置 */
+@media (width >= 1024px) {
+  .concept {
+    padding-block: 96px;
+  }
+
+  .inner {
+    width: min(100%, 1440px);
+    max-width: none;
+    /* カンプのフレーム比率（1440 x 1021）。本文が収まる高さは常に確保 */
+    min-height: max(908px, calc(min(100vw, 1440px) * 1021 / 1440));
+  }
+
+  .spStage {
+    display: none;
+  }
+
+  .brSp {
+    display: none;
+  }
+
+  .content {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    gap: 40px;
+    width: 480px;
+    max-width: calc(100% - 40px);
+    padding-inline: 0;
+    padding-block: 8px 0;
+  }
+
+  .texts {
+    gap: 46px;
+  }
+
+  .body {
+    gap: 44px;
+  }
+
+  .leaf {
+    display: block;
+    position: absolute;
+    margin: 0;
+    z-index: 1;
+  }
+
+  /* SP 用グローは PC では非表示 */
+  .spGlowSign,
+  .spGlowTea {
+    display: none;
+  }
+
+  /* PC: 4枚それぞれの背後にグローを配置（vector 中心） */
+  .glow1,
+  .glow2,
+  .glow3,
+  .glow4 {
+    display: block;
+    width: 47.15%;
+  }
+
+  /* 左上（茶）: 緑グロー */
+  .glow1 {
+    top: 25.12%;
+    left: 15.03%;
+    background-image: url('/concept/leaf-glow-green.svg');
+  }
+
+  /* 右上（看板） */
+  .glow2 {
+    top: 28.55%;
+    left: 79.2%;
+  }
+
+  /* 左下（子ども） */
+  .glow3 {
+    top: 70.67%;
+    left: 12.26%;
+  }
+
+  /* 右下（来客） */
+  .glow4 {
+    top: 70.76%;
+    left: 82.12%;
+    background-image: url('/concept/leaf-glow-green.svg');
+  }
+
+  /* 左上（茶）: mask-c を反転して先端を中央側へ */
+  .leaf1 {
+    top: 6.17%;
+    left: 6.31%;
+    width: 21.83%;
+    aspect-ratio: 314.378 / 241.916;
+    -webkit-mask: url('/concept/mask-c-flip.svg') center / 100% 100% no-repeat;
+    mask: url('/concept/mask-c-flip.svg') center / 100% 100% no-repeat;
+  }
+
+  /* 右上（看板） */
+  .leaf2 {
+    top: 12.73%;
+    left: 67.76%;
+    width: 21.83%;
+    aspect-ratio: 314.378 / 241.916;
+    -webkit-mask: url('/concept/mask-c.svg') center / 100% 100% no-repeat;
+    mask: url('/concept/mask-c.svg') center / 100% 100% no-repeat;
+  }
+
+  /* 左下（子ども） */
+  .leaf3 {
+    top: 47.15%;
+    left: 4.23%;
+    width: 25.88%;
+    aspect-ratio: 372.642 / 287.057;
+    -webkit-mask: url('/concept/mask-c-flip.svg') center / 100% 100% no-repeat;
+    mask: url('/concept/mask-c-flip.svg') center / 100% 100% no-repeat;
+  }
+
+  /* 右下（来客）*/
+  .leaf4 {
+    top: 53.76%;
+    left: 64.37%;
+    width: 25.01%;
+    aspect-ratio: 360.157 / 277.452;
+    -webkit-mask: url('/concept/mask-b.svg') center / 100% 100% no-repeat;
+    mask: url('/concept/mask-b.svg') center / 100% 100% no-repeat;
+  }
+}

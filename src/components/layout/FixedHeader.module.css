@@ -1,0 +1,98 @@
+/* 固定ハンバーガー(SP: カンプ 972:5085 → top 15px / right 15px / 30x16) */
+.hamburger {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 60;
+  width: 30px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.hamburger.isVisible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  margin-left: auto;
+  background-color: var(--black);
+}
+
+.hamburger span:nth-child(1) {
+  width: 100%;
+}
+
+.hamburger span:nth-child(2) {
+  width: 73%;
+}
+
+.hamburger span:nth-child(3) {
+  width: 47%;
+}
+
+/* 固定予約ボタン(SP: カンプ 972:5089 → right 10px / bottom 10px / 111px) */
+.fixedReserve {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 50;
+  width: clamp(88px, 25.23vw, 111px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* イラストと同じく「下からひょこっと」出す(overshoot イージング) */
+  transform: translateY(48px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+    visibility 0.7s ease;
+}
+
+.fixedReserve.isVisible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fixedReserve {
+    transform: none;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+}
+
+.reserveButton {
+  width: 100%;
+}
+
+/* PC: カンプ「1スクロール後」(1440 x 879) の配置 */
+@media (width >= 768px) {
+  .hamburger {
+    top: clamp(28px, 3.06vw, 44px);
+    right: 4.44%;
+    width: clamp(32px, 2.78vw, 40px);
+    height: clamp(17px, 1.53vw, 22px);
+  }
+
+  .fixedReserve {
+    right: 3.26%;
+    bottom: 3.87%;
+    width: clamp(80px, 7.71vw, 111px);
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Wagou",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.2",
+    "microcms-js-sdk": "^3.4.0",
+    "next": "16.2.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "eslint-config-prettier": "^10.1.8",
+    "postcss": "^8.5.16",
+    "postcss-nesting": "^14.0.0",
+    "prettier": "^3.8.4",
+    "typescript": "^6.0.3",
+    "wp-types": "^4.69.0"
+  }
+}

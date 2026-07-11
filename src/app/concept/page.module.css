@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: calc(800px + 20px * 2);
+  max-width: 100%;
+  margin-inline: auto;
+
+  @media (width >= 768px) {
+    gap: 72px;
+  }
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  width: 100%;
+
+  @media (width >= 768px) {
+    gap: 40px;
+  }
+}
+
+.text {
+  width: 100%;
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  word-break: auto-phrase;
+}
+
+.figure {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* パンくずを本文と同じ 800px カラム・左寄せに合わせる(カンプ準拠) */
+.breadcrumb {
+  width: calc(800px + 20px * 2);
+  max-width: 100%;
+  margin-inline: auto;
+  padding-block: 24px;
+
+  @media (width >= 768px) {
+    padding-block: 40px;
+  }
+}
+
+/* 共有 Breadcrumb は news 向けに広いコンテナ幅を持つため、本文カラムに合わせて内側余白を打ち消す */
+.breadcrumb ul {
+  padding-inline: 0;
+}

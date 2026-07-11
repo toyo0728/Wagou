@@ -1,0 +1,45 @@
+.lead {
+  color: var(--Gray-700, #374151);
+  font-family: Montserrat;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.8;
+  text-align: center;
+
+  @media (width >= 768px) {
+    font-size: 80px;
+  }
+}
+
+.text {
+  margin-top: 8px;
+  color: var(--Gray-700, #374151);
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+
+  @media (width >= 768px) {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.image {
+  display: block;
+  width: 320px;
+  height: auto;
+  max-width: 100%;
+  margin-top: 20px;
+  margin-inline: auto;
+
+  @media (width >= 768px) {
+    margin-top: 32px;
+  }
+}
+
+.button {
+  text-align: center;
+  margin-top: 34px;
+}

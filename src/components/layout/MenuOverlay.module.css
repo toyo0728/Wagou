@@ -1,0 +1,143 @@
+/* オーバーレイ全体 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.overlay.isOpen {
+  pointer-events: auto;
+}
+
+/* スクロールコンテナ。パネルがビューポート高さを超えたらここが縦スクロールする */
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+/* 左余白は透明のまま。タップで閉じるための背面。
+   fixed で常にビューポート全体を覆い、スクロールしても追従する */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* 右パネル: グラデーション背景(280 / 440 = 63.64%)
+   in-flow 要素として右寄せ。高さは最低でもビューポート(min-height:100%)、
+   中身(.content)がそれより高ければ伸び、.stage がスクロールする。 */
+.panel {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  width: 63.64%;
+  min-height: 100%;
+  background: url('/menu/panel-bg.webp') center / cover no-repeat;
+  box-shadow: -8px 0 64px rgba(178, 178, 178, 0.25);
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+}
+
+.overlay.isOpen .panel {
+  transform: translateX(0);
+}
+
+/* 中身: カンプ(280 x 879)の比率を固定。高さは幅からのみ決まるので、
+   画面高さに関係なく常にカンプと同じ配置になる。溢れた分はスクロール。 */
+.content {
+  position: relative;
+  flex: none;
+  width: 100%;
+  aspect-ratio: 280 / 879;
+}
+
+/* 閉じる(×) — カンプ: 右端から 7.14% */
+.close {
+  position: absolute;
+  top: 0.89%;
+  right: 7.14%;
+  width: 10.71%;
+  aspect-ratio: 1;
+  padding: 0;
+}
+
+.close span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--black);
+}
+
+.close span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.close span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+/* ロゴ — カンプ: left 54.29%, top 10.24%, width 35.71% */
+.logo {
+  position: absolute;
+  top: 10.24%;
+  left: 54.29%;
+  width: 35.71%;
+  line-height: 0;
+}
+
+.logo :global(img) {
+  width: 100%;
+  height: auto;
+}
+
+/* ナビ — カンプ: left 33.21%, top 25.03%, width 56.79%, 右寄せ */
+.navList {
+  position: absolute;
+  top: 25.03%;
+  left: 33.21%;
+  width: 56.79%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: right;
+}
+
+.navLink {
+  display: inline-block;
+  font-size: clamp(14px, 3.64vw, 16px);
+  font-weight: 700;
+  line-height: 2.5;
+  color: var(--black);
+  transition: color 0.2s ease;
+}
+
+@media (any-hover: hover) {
+  .navLink:hover {
+    color: var(--main);
+  }
+}
+
+/* 予約する — カンプ: left 56.79%, top 77.36%, width 39.64%(111 x 157) */
+.reserve {
+  position: absolute;
+  top: 77.36%;
+  left: 56.79%;
+  width: 39.64%;
+}
+
+/* PC: パネルの横幅を抑え、内部要素の比率は SP を踏襲 */
+@media (width >= 768px) {
+  .panel {
+    width: clamp(320px, 30vw, 420px);
+  }
+}

@@ -1,0 +1,47 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 38px;
+  width: 100%;
+  padding: 0 10px 10px;
+  border-bottom: 1px solid #939393;
+}
+
+.date {
+  flex-shrink: 0;
+  width: 120px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 1.8px;
+  color: var(--black);
+  white-space: nowrap;
+}
+
+.title {
+  flex: 1 0 0;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 1.8px;
+  color: var(--black);
+  word-break: break-word;
+}
+
+@media (width >= 768px) {
+  .item {
+    gap: 54px;
+    padding: 0 12px 12px;
+  }
+
+  .date {
+    font-size: 16px;
+    letter-spacing: 1.92px;
+  }
+
+  .title {
+    font-size: 16px;
+    letter-spacing: 1.92px;
+  }
+}

@@ -1,0 +1,49 @@
+.content {
+  position: relative;
+  z-index: 0;
+  display: grid;
+  gap: 60px;
+  justify-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+
+  @media (width >= 768px) {
+    gap: 72px;
+  }
+}
+
+/* カンプ準拠の緑ロゴ透かし
+   SP: 474px / ヘッダー直下の右寄り上部 (Figma 440px フレーム: top118 / left81)
+   PC: 614px / フォーム右背後 */
+.watermark {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  width: 474px;
+  max-width: none;
+  height: auto;
+  transform: translateX(-30%);
+  opacity: 0.8;
+  pointer-events: none;
+
+  @media (width >= 768px) {
+    top: auto;
+    bottom: -67px;
+    left: 48%;
+    width: 614px;
+    transform: none;
+  }
+}
+
+.text {
+  color: #374151;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+
+  @media (width >= 768px) {
+    font-size: 18px;
+  }
+}

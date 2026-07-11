@@ -1,0 +1,115 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 390px;
+  padding: 60px 45px 25px;
+  background: #fff;
+  border-radius: 20px;
+  animation: popIn 0.2s ease;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+}
+
+.thumbnail {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 300 / 225;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.title {
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: center;
+  color: var(--black);
+}
+
+.description {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
+  white-space: pre;
+  color: var(--black);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 146px;
+  height: 36px;
+  border: 1px solid var(--main);
+  border-radius: 1px 20px 1px 20px;
+  background: transparent;
+  color: var(--main);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  transition: 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: var(--main);
+      color: #fff;
+    }
+  }
+}
+
+.closeText {
+  letter-spacing: 1.92px;
+  text-indent: 1.92px;
+}
+
+.closeIcon {
+  flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

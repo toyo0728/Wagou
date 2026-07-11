@@ -1,0 +1,39 @@
+/* ハンバーガーボタン(FirstView の右上に絶対配置) */
+.hamburger {
+  position: absolute;
+  top: 1.57%;
+  right: 3.41%;
+  width: 6.82%;
+  aspect-ratio: 30 / 18;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 6;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  margin-left: auto;
+  background-color: var(--black);
+}
+
+.hamburger span:nth-child(1) {
+  width: 100%;
+}
+
+.hamburger span:nth-child(2) {
+  width: 73%;
+}
+
+.hamburger span:nth-child(3) {
+  width: 47%;
+}
+
+/* PC ではハンバーガーを使わない(左の縦ナビを表示) */
+@media (width >= 768px) {
+  .hamburger {
+    display: none;
+  }
+}

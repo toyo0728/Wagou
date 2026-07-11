@@ -1,0 +1,30 @@
+.heading {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+}
+
+.isCenter {
+  margin-inline: auto;
+}
+
+.text {
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  white-space: nowrap;
+
+  @media (width >= 768px) {
+    font-size: 20px;
+  }
+}
+
+.line {
+  flex-shrink: 0;
+  width: 50px;
+  height: 1px;
+  background-color: var(--black);
+}

@@ -1,0 +1,25 @@
+.buttonOutline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: auto;
+  padding: 8px 16px 10px;
+  border: 2px solid var(--main);
+  border-radius: 1px 20px 1px 20px;
+  background: transparent;
+  color: var(--main);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+@media (any-hover: hover) {
+  .buttonOutline:hover {
+    background: var(--main);
+    color: #fff;
+  }
+}

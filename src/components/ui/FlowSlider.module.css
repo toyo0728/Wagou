@@ -1,0 +1,125 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  padding: 16px 4px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: min(643px, 88%);
+  scroll-snap-align: start;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  width: 100%;
+}
+
+.bar {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 9px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(134, 134, 134, 0.25);
+}
+
+.thumb {
+  position: absolute;
+  top: 0;
+  height: 9px;
+  background-color: var(--main);
+  border-radius: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--main);
+  border-radius: 50%;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+}
+
+@media (any-hover: hover) {
+  .navBtn:hover {
+    opacity: 0.85;
+  }
+}
+
+@media (width >= 768px) {
+  .track {
+    gap: 36px;
+  }
+
+  .controls {
+    align-items: flex-end;
+    gap: 20px;
+    max-width: 1050px;
+    margin-inline: auto;
+  }
+}
+
+/* 1440px カンプ基準: 左右インセット 220px (= 220/1440 ≈ 15.28vw、220px で上限) */
+@media (width >= 1024px) {
+  .slider {
+    --flow-inset: clamp(24px, 15.28vw, 220px);
+  }
+
+  /* トラックは画面幅いっぱい。左右の余白は padding で確保し、
+     カードはスクロール時に画面端まで流れる（scroll-padding で初期位置を 220px に揃える）*/
+  .track {
+    padding-left: var(--flow-inset);
+    padding-right: var(--flow-inset);
+    scroll-padding-left: var(--flow-inset);
+  }
+
+  .slide {
+    width: 643px;
+  }
+
+  .controls {
+    align-items: flex-end;
+    max-width: none;
+    margin-inline: 0;
+    padding-right: var(--flow-inset);
+  }
+}

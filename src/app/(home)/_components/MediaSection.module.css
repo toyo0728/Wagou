@@ -1,0 +1,106 @@
+.media {
+  position: relative;
+  padding-block: 48px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  width: min(100% - 40px, 800px);
+  margin-inline: auto;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.illustWrap {
+  position: relative;
+  overflow: hidden;
+  /* 反転(scaleX(-1))は ScrollFade の --sf-extra 経由で付与し、pop アニメーションと合成する */
+  pointer-events: none;
+}
+
+.illust {
+  position: absolute;
+  top: -16.52%;
+  left: -41.92%;
+  width: 174.14%;
+  height: 124.93%;
+  max-width: none;
+  object-fit: cover;
+}
+
+/* SP: イラストはリスト下・左寄せに配置 */
+.illustSp {
+  display: block;
+  width: 100px;
+  height: 105px;
+  margin: 24px 0 0 20px;
+}
+
+.illustPc {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .media {
+    padding-block: 100px 54px;
+  }
+
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 88px;
+  }
+
+  .head {
+    width: 170px;
+    gap: 36px;
+  }
+
+  .body {
+    width: 542px;
+    align-items: flex-end;
+    gap: 32px;
+  }
+
+  .list {
+    gap: 20px;
+    max-width: none;
+  }
+
+  .illustSp {
+    display: none;
+  }
+
+  /* PC: イラストは見出し下(左カラム)に配置 */
+  .illustPc {
+    display: block;
+    width: 130px;
+    height: 136px;
+  }
+}

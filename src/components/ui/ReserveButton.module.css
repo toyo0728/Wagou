@@ -1,0 +1,85 @@
+.reserveButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 111 / 157;
+  transition: opacity 0.5s ease;
+}
+
+/* しずく型マスク + テクスチャ背景 (Figma: green-bg 359px, mask-position 171px 22.743px) */
+.reserveShape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 92.99%;
+  overflow: hidden;
+  -webkit-mask: url('/menu/reserve-mask.svg') center top / 100% 100% no-repeat;
+  mask: url('/menu/reserve-mask.svg') center top / 100% 100% no-repeat;
+}
+
+.reserveShape::before {
+  content: '';
+  position: absolute;
+  width: 323.42%;
+  aspect-ratio: 1;
+  left: -154.05%;
+  top: -14.38%;
+  background: url('/menu/reserve-bg.webp') center / cover no-repeat;
+}
+
+.reserveTexts {
+  position: absolute;
+  top: 38.85%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.reserveMain {
+  font-family: var(--font-noto-sans-jp), sans-serif;
+  font-size: clamp(16px, 4.09vw, 18px);
+  font-weight: 700;
+  line-height: 25px;
+}
+
+.reserveSub {
+  font-family: var(--font-noto-serif-jp), serif;
+  font-size: clamp(11px, 2.73vw, 12px);
+  font-weight: 400;
+  line-height: 25px;
+}
+
+.reserveIllust {
+  position: absolute;
+  top: 70.06%;
+  left: 50%;
+  width: 45.95%;
+  aspect-ratio: 51 / 47;
+  overflow: hidden;
+  transform: translateX(-50%) scaleX(-1) ;
+  transition: opacity 0.5s ease;
+}
+
+.reserveIllust img {
+  position: absolute;
+  top: -54.83%;
+  left: -177.73%;
+  width: 484.23%;
+  height: 183.61%;
+  max-width: none;
+}
+
+@media (any-hover: hover) {
+  .reserveButton:hover .reserveShape::before {
+    opacity: 0.7;
+  }
+  .reserveButton:hover .reserveIllust {
+    opacity: 0.7;
+  }
+}
