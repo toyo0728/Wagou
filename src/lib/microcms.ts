@@ -2,21 +2,29 @@ import { createClient } from 'microcms-js-sdk';
 import type { MicroCMSListResponse } from 'microcms-js-sdk';
 import type { Category, News } from '@/types/microcms';
 
-// 環境変数にMICROCMS_SERVICE_DOMAINが設定されていない場合はエラーを投げる
-if (!process.env.MICROCMS_SERVICE_DOMAIN) {
-  throw new Error('MICROCMS_SERVICE_DOMAIN is required');
-}
+// Client SDK を遅延初期化する。
+// import 時ではなく実際に使うときに初めて環境変数を検証することで、
+// 環境変数が未設定でもモジュール読み込み(ビルド)を落とさない。
+// (Cloudflare など、ビルド時にランタイム環境変数が読めない環境への対策)
+type MicroCMSClient = ReturnType<typeof createClient>;
+let cachedClient: MicroCMSClient | null = null;
 
-// 環境変数にMICROCMS_API_KEYが設定されていない場合はエラーを投げる
-if (!process.env.MICROCMS_API_KEY) {
-  throw new Error('MICROCMS_API_KEY is required');
-}
+function getClient(): MicroCMSClient {
+  if (cachedClient) return cachedClient;
 
-// Client SDKの初期化を行う
-export const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: process.env.MICROCMS_API_KEY,
-});
+  const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
+  const apiKey = process.env.MICROCMS_API_KEY;
+
+  if (!serviceDomain) {
+    throw new Error('MICROCMS_SERVICE_DOMAIN is required');
+  }
+  if (!apiKey) {
+    throw new Error('MICROCMS_API_KEY is required');
+  }
+
+  cachedClient = createClient({ serviceDomain, apiKey });
+  return cachedClient;
+}
 
 // お知らせ記事のエンドポイント名
 const ENDPOINT = 'news';
@@ -26,7 +34,7 @@ const CATEGORY_ENDPOINT = 'category';
 // カテゴリー一覧を取得する。エラー時は空配列を返す
 export async function getCategories(): Promise<Category[]> {
   try {
-    const { contents } = await client.getList<Category>({
+    const { contents } = await getClient().getList<Category>({
       endpoint: CATEGORY_ENDPOINT,
       queries: { limit: 100 },
     });
@@ -62,7 +70,7 @@ export async function getNewsList(
 ): Promise<MicroCMSListResponse<News>> {
   const offset = (page - 1) * perPage;
   try {
-    return await client.getList<News>({
+    return await getClient().getList<News>({
       endpoint: ENDPOINT,
       queries: { limit: perPage, offset, orders: '-publishedAt' },
     });
@@ -79,7 +87,7 @@ export async function getNewsListByCategory(
 ): Promise<MicroCMSListResponse<News>> {
   const offset = (page - 1) * perPage;
   try {
-    return await client.getList<News>({
+    return await getClient().getList<News>({
       endpoint: ENDPOINT,
       queries: {
         limit: perPage,
@@ -96,7 +104,7 @@ export async function getNewsListByCategory(
 // 記事詳細を取得する。見つからない場合は null を返す(ページ側で notFound() する)
 export async function getNewsDetail(contentId: string): Promise<News | null> {
   try {
-    return await client.getListDetail<News>({
+    return await getClient().getListDetail<News>({
       endpoint: ENDPOINT,
       contentId,
     });
