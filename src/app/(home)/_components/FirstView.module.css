@@ -286,7 +286,7 @@
 
   @media (any-hover: hover) {
     .navLink:hover {
-      color: var(--main);
+      color: var(--accent);
     }
   }
 }
